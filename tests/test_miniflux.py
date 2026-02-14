@@ -10,17 +10,34 @@ def test_script_exists():
     assert os.access(script_path, os.X_OK), f"Script not executable: {script_path}"
 
 
-def test_script_has_required_functions():
-    """Test that script has required functions."""
+def test_python_cli_exists():
+    """Test that miniflux-cli.py exists."""
+    cli_path = os.path.join(os.path.dirname(__file__), '..', 'scripts', 'miniflux-cli.py')
+    assert os.path.exists(cli_path), f"Python CLI not found: {cli_path}"
+
+
+def test_wrapper_script_validates_environment():
+    """Test that wrapper script checks for MINIFLUX_TOKEN."""
     script_path = os.path.join(os.path.dirname(__file__), '..', 'scripts', 'miniflux.sh')
     
     with open(script_path, 'r') as f:
         script_content = f.read()
     
-    # Check for key functions
-    required_functions = ['api_get', 'api_post', 'api_patch', 'api_delete']
-    for func in required_functions:
-        assert func in script_content, f"Missing function: {func}"
+    # Check that script validates environment
+    assert 'MINIFLUX_TOKEN' in script_content, "Script should validate MINIFLUX_TOKEN"
+    assert 'MINIFLUX_URL' in script_content, "Script should set MINIFLUX_URL"
+
+
+def test_wrapper_calls_python_cli():
+    """Test that wrapper script calls Python CLI."""
+    script_path = os.path.join(os.path.dirname(__file__), '..', 'scripts', 'miniflux.sh')
+    
+    with open(script_path, 'r') as f:
+        script_content = f.read()
+    
+    # Check that it calls Python script
+    assert 'python3' in script_content, "Wrapper should call python3"
+    assert 'miniflux-cli.py' in script_content, "Wrapper should call miniflux-cli.py"
 
 
 def test_skill_documentation_exists():
@@ -39,7 +56,7 @@ def test_skill_documentation_has_required_sections():
         content = f.read()
     
     required_sections = [
-        '## Setup',
+        '## Installation',
         '## Configuration',
         '## Usage',
         '## Commands Reference'
@@ -58,3 +75,26 @@ def test_readme_exists_and_has_content():
     
     assert len(content) > 100, "README.md is too short"
     assert '# Miniflux' in content, "README.md should have title"
+
+
+def test_python_cli_imports_miniflux():
+    """Test that Python CLI imports miniflux package."""
+    cli_path = os.path.join(os.path.dirname(__file__), '..', 'scripts', 'miniflux-cli.py')
+    
+    with open(cli_path, 'r') as f:
+        cli_content = f.read()
+    
+    assert 'import miniflux' in cli_content, "Python CLI should import miniflux package"
+
+
+def test_python_cli_has_api_functions():
+    """Test that Python CLI has API functions."""
+    cli_path = os.path.join(os.path.dirname(__file__), '..', 'scripts', 'miniflux-cli.py')
+    
+    with open(cli_path, 'r') as f:
+        cli_content = f.read()
+    
+    # Check for key API calls
+    required_api_calls = ['get_entries', 'get_feeds', 'create_feed']
+    for api_call in required_api_calls:
+        assert api_call in cli_content, f"Missing API call: {api_call}"
