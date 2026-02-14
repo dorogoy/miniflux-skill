@@ -1,6 +1,6 @@
 {
   "bootstrap-sha": "49d5806",
-  "release-type": "python",
+  "release-type": "simple",
   "changelog-sections": [
     { "type": "feat", "section": "Features" },
     { "type": "fix", "section": "Bug Fixes" },

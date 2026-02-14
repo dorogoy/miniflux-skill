@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-02-14
+
 ### Added
 - Initial skill implementation
 - REST API v1 integration with X-Auth-Token authentication
@@ -18,12 +20,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Python client integration with official `miniflux` package
 - Comprehensive documentation (SKILL.md and README.md)
 - GitHub Actions workflows for testing and releases
-
-### Fixed
-- Removed accidentally committed `__pycache__` directory
-- Added `.gitignore` for Python projects
-
-## [0.1.0] - 2026-02-14
-
-### Added
-- Initial release of Miniflux skill for OpenClaw
+- Initial `.gitignore` for Python projects

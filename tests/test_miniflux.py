@@ -74,7 +74,7 @@ def test_readme_exists_and_has_content():
         content = f.read()
     
     assert len(content) > 100, "README.md is too short"
-    assert '# Miniflux' in content, "README.md should have title"
+    assert '# Miniflux Skill for OpenClaw' in content, "README.md should have title"
 
 
 def test_python_cli_imports_miniflux():
