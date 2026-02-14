@@ -56,7 +56,7 @@ def test_skill_documentation_has_required_sections():
         content = f.read()
     
     required_sections = [
-        '## Installation',
+        '## Setup',
         '## Configuration',
         '## Usage',
         '## Commands Reference'
