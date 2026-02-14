@@ -1,0 +1,48 @@
+name: PR Test
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install miniflux
+
+      - name: Run tests
+        run: pytest tests/ -v
+
+      - name: Validate SKILL.md
+        run: |
+          # Check SKILL.md exists and has proper format
+          if [ ! -f "SKILL.md" ]; then
+            echo "ERROR: SKILL.md not found"
+            exit 1
+          fi
+
+          # Check for required sections
+          required_sections=("## Setup" "## Usage" "## Commands Reference")
+          for section in "${required_sections[@]}"; do
+            if ! grep -q "$section" SKILL.md; then
+              echo "ERROR: Missing section: $section"
+              exit 1
+            fi
+          done
+          echo "SKILL.md validation passed"

@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Run Release Please
+        uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          release-type: python
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to ClawHub
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+        run: |
+          npm install -g @clawhub/cli
+          clawhub publish . \
+            --version ${{ steps.release.outputs.version }} \
+            --changelog "Release ${{ steps.release.outputs.version }}: See CHANGELOG.md for details"
