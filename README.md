@@ -186,3 +186,56 @@ export MINIFLUX_URL="https://reader.etereo.cloud/v1/"  # Wrong
 ## License
 
 This skill is part of OpenClaw and follows the same license.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
+
+### Semantic Releases
+
+This project uses [semantic releases](https://www.conventionalcommits.org/) with [release-please-action](https://github.com/googleapis/release-please-action).
+
+#### Commit Format
+
+```
+<type>(<scope>): <subject>
+```
+
+Types:
+- `feat:` New feature
+- `fix:` Bug fix
+- `docs:` Documentation
+- `test:` Tests
+- `chore:` Build/auxiliary changes
+
+Example:
+```bash
+git commit -m "feat(feeds): add OPML import support"
+git commit -m "fix(auth): handle missing MINIFLUX_TOKEN gracefully"
+```
+
+#### Release Process
+
+1. Create PR with conventional commits
+2. CI runs tests
+3. Merge to `master` triggers release workflow
+4. Automatic version bump based on commit types
+5. CHANGELOG.md updated automatically
+6. Published to ClawHub
+
+## Tests
+
+```bash
+# Install dependencies
+make install
+
+# Run tests
+make test
+
+# Run all checks
+make check
+```
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.
