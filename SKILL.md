@@ -1,3 +1,8 @@
+---
+name: miniflux
+description: Manage Miniflux - Modern minimalist feed reader via REST API. Use for listing feeds and entries, creating/removing subscriptions, searching articles, managing categories, and marking entries as read/unread.
+---
+
 # Miniflux Skill
 
 Manage Miniflux - Modern minimalist feed reader via REST API.
