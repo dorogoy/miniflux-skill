@@ -1,5 +1,6 @@
 # Release automation
 release-please-config.json
+release-please-manifest.json
 
 # Tests
 tests/
