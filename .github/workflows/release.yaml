@@ -5,10 +5,6 @@ on:
     branches:
       - master
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -28,6 +24,18 @@ jobs:
         with:
           release-type: python
           token: ${{ secrets.GITHUB_TOKEN }}
+          fork: true
+
+      # TODO: Enable ClawHub publishing after first manual test
+      # - name: Publish to ClawHub
+      #   if: ${{ steps.release.outputs.release_created }}
+      #   env:
+      #     CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+      #   run: |
+      #     npm install -g @clawhub/cli
+      #     clawhub publish . \
+      #       --version ${{ steps.release.outputs.version }} \
+      #       --changelog "Release ${{ steps.release.outputs.version }}: See CHANGELOG.md for details"
 
       # TODO: Enable ClawHub publishing after first manual test
       # - name: Publish to ClawHub
