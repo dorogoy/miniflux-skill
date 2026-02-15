@@ -62,6 +62,9 @@ bash miniflux.sh mark-read --entry-ids 123,456
 # Mark feed as read
 bash miniflux.sh mark-feed-read --feed-id 42
 
+# Toggle bookmark/star
+bash miniflux.sh toggle-bookmark --entry-id 123
+
 # Discover subscriptions from a website
 bash miniflux.sh discover --url "https://example.org"
 
@@ -106,6 +109,7 @@ bash miniflux.sh update-feed --feed-id 42 --title "New Title" --category-id 3
 | `mark-read` | Mark specific entries as read |
 | `mark-unread` | Mark specific entries as unread |
 | `mark-feed-read` | Mark all entries of a feed as read |
+| `toggle-bookmark` | Toggle bookmark/star status of an entry |
 | `discover` | Discover subscriptions from a URL |
 | `counters` | Get unread/read counters per feed |
 | `me` | Get current user info |
