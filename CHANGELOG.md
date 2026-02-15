@@ -5,6 +5,13 @@ All notable changes to the Miniflux skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1](https://github.com/dorogoy/miniflux-skill/compare/v0.2.0...v0.2.1) (2026-02-15)
+
+
+### Bug Fixes
+
+* add release-please-manifest.json to .clawhubignore ([5589053](https://github.com/dorogoy/miniflux-skill/commit/5589053477144eea436d5c2d2bd10098dabc04d8))
+
 ## [0.2.0](https://github.com/dorogoy/miniflux-skill/compare/v0.1.0...v0.2.0) (2026-02-15)
 
 
