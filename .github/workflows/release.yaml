@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   release:
@@ -22,20 +25,8 @@ jobs:
         uses: googleapis/release-please-action@v4
         id: release
         with:
-          release-type: python
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fork: true
 
-      # TODO: Enable ClawHub publishing after first manual test
-      # - name: Publish to ClawHub
-      #   if: ${{ steps.release.outputs.release_created }}
-      #   env:
-      #     CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
-      #   run: |
-      #     npm install -g @clawhub/cli
-      #     clawhub publish . \
-      #       --version ${{ steps.release.outputs.version }} \
-      #       --changelog "Release ${{ steps.release.outputs.version }}: See CHANGELOG.md for details"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # TODO: Enable ClawHub publishing after first manual test
       # - name: Publish to ClawHub
