@@ -23,7 +23,7 @@ uv pip install miniflux
 Set the following environment variables:
 
 ```bash
-export MINIFLUX_URL="https://reader.etereo.cloud"
+export MINIFLUX_URL="https://your-miniflux-instance.com"
 export MINIFLUX_TOKEN="your-api-token-here"
 ```
 
