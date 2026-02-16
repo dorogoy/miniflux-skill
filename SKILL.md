@@ -1,6 +1,14 @@
 ---
 name: miniflux
 description: Manage Miniflux - Modern minimalist feed reader via REST API. Use for listing feeds and entries, creating/removing subscriptions, searching articles, managing categories, and marking entries as read/unread.
+metadata:
+  {
+    "openclaw":
+      {
+        "requires": { "bins": ["python3"], "env": ["MINIFLUX_URL", "MINIFLUX_TOKEN"] },
+        "primaryEnv": "MINIFLUX_TOKEN"
+      }
+  }
 ---
 
 # Miniflux Skill
