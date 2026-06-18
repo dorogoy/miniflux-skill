@@ -5,6 +5,13 @@ All notable changes to the Miniflux skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.4](https://github.com/dorogoy/miniflux-skill/compare/v0.2.3...v0.2.4) (2026-06-18)
+
+
+### Miscellaneous
+
+* Add MIT LICENSE ([#8](https://github.com/dorogoy/miniflux-skill/issues/8)) ([4d5fc8f](https://github.com/dorogoy/miniflux-skill/commit/4d5fc8fb3fdc09395457f71f767729d83efaba8b))
+
 ## [0.2.3](https://github.com/dorogoy/miniflux-skill/compare/v0.2.2...v0.2.3) (2026-02-16)
 
 
