@@ -21,12 +21,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Generate bot token
+        id: bot-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+
       - name: Run Release Please
         uses: googleapis/release-please-action@v4
         id: release
         with:
 
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.bot-token.outputs.token }}
 
       # TODO: Enable ClawHub publishing after first manual test
       # - name: Publish to ClawHub
